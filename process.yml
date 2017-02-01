@@ -3,5 +3,9 @@ apps:
     instances: 4
     exec_mode: cluster
     watch  : true
-    env    :
+    env_production  :
       NODE_ENV: production
+      port: 3000
+    env_development :
+      NODE_ENV: development
+      port: 3000
