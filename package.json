@@ -1,0 +1,43 @@
+{
+  "name": "mcafeewedding",
+  "version": "1.0.0",
+  "main": "server/server.js",
+  "website": "http://mcafeewedding.com",
+  "scripts": {
+    "start:dev": "better-npm-run start:dev",
+    "start:prod": "better-npm-run start:prod"
+  },
+  "betterScripts": {
+    "start:dev": {
+      "command": "nodemon .",
+      "env": {
+        "NODE_ENV": "dev",
+        "PORT": "8080"
+      }
+    },
+    "start:prod": {
+      "command": "nodemon .",
+      "env": {
+        "NODE_ENV": "production",
+        "PORT": "80"
+      }
+    }
+  },
+  "dependencies": {
+    "better-npm-run": "0.0.14",
+    "body-parser": "^1.16.0",
+    "express": "^4.14.1",
+    "express-handlebars": "^3.0.0",
+    "handlebars": "^4.0.6"
+  },
+  "devDependencies": {
+    "eslint": "^2.13.1",
+    "nodemon": "^1.11.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ryanmcafee/McAfeeWedding.git"
+  },
+  "license": "MIT",
+  "description": "McAfee Wedding Website"
+}
