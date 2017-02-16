@@ -84,17 +84,53 @@ $(document).ready(function(){
 
   }).on('success.form.fv', function(e) {
 
-        console.log("Validating form!");
         // Prevent form submission
         e.preventDefault();
+
         // Get the form instance
         var $form = $(e.target);
+
         // Get the FormValidation instance
         var bv = $form.data('formValidation');
-        // Use Ajax to submit form data
-        $.post($form.attr('action'), $form.serialize(), function(result) {
-          console.log(result);
-        }, 'json');
+
+        //The endpoint to submit the form to
+        var route = '/api/contact';
+
+        //The form data
+        var params = $form.serialize();
+
+        //Submit the form data
+        $.ajax({
+          type: "POST",
+          url: route,
+          data: params,
+          dataType: "json"
+        }).done(function (result) {
+
+          $('#message-area').html("<div class='alert alert-success alert-dismissable'>" +
+              "<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>" +
+              "<span><strong>Success!</strong> " + result.description + "</span>" +
+            "</div>"
+          );
+
+          $form
+            .formValidation('disableSubmitButtons', false)  // Enable the submit buttons
+            .formValidation('resetForm', true);             // Reset the form
+
+        }).fail(function (error) {
+
+          console.log(error);
+
+          $('#message-area').html("<div class='alert alert-danger alert-dismissable'>" +
+            "<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>" +
+            "<span><strong>Error!</strong> " + error.responseJSON.description + "</span>" +
+            "</div>"
+          );
+
+          $form
+            .formValidation('disableSubmitButtons', false);  // Enable the submit buttons
+        });
+
   });
 
 });

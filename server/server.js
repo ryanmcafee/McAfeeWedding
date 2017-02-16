@@ -60,25 +60,6 @@ app.get('/contact-us', function (req, res) {
 });
 
 app.post('/contact-us', function (req, res) {
-  const body = req.body;
-
-  console.log(body);
-
-  postmarkclient.sendEmail({
-    "From": "noreply@mcafeewedding.com",
-    "To": "admin@ryanmcafee.com",
-    "ReplyTo": body.email,
-    "Subject": body.subject,
-    "TextBody": body.message,
-  }, function(error, result) {
-    if(error) {
-      console.error("Unable to send via postmark: " + error.message);
-      return;
-    }
-    console.info("Sent to postmark for delivery")
-  });
-
-
   res.render('contact');
 });
 
@@ -105,6 +86,44 @@ app.get('/directions', function (req, res) {
 app.get('/registry', function (req, res) {
   res.render('registry');
 });
+
+//API
+app.post('/api/contact', function (req, res) {
+
+  const body = req.body;
+
+  postmarkclient.sendEmail({
+    "From": "noreply@mcafeewedding.com",
+    "To": "admin@ryanmcafee.com",
+    "ReplyTo": body.email,
+    "Subject": body.subject,
+    "TextBody": body.message,
+  }, function(error, result) {
+
+    if(error !== null) {
+      console.log("Error", error);
+      res.status(500).json({
+        status: false,
+        message: "Error",
+        description: 'Unable to send email, email server down! Please try again later.',
+        code: 500,
+        error: error
+      })
+    } else {
+      console.log("Email delivery result", result);
+      console.info("Sent to postmark for delivery");
+      res.json({
+        status: true,
+        message: "Success",
+        description: 'Message was sent for delivery!',
+        code: 200
+      })
+    }
+
+  });
+
+});
+
 
 //Turn on view cache when in production mode
 if(isProduction){
