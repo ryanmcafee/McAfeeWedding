@@ -92,12 +92,21 @@ app.post('/api/contact', function (req, res) {
 
   const body = req.body;
 
+  const htmlBody = "<html><div><h3>Subject: </h3><span>" + body.subject + "</span></div>" +
+                    "<div><h3>Name: </h3><span>" + body.firstname + " " + body.lastname + "</span></div>" +
+                    "<div><h3>Email Address: </h3><span>" + body.email + "</span></div>" +
+                    "<div><h3>Phone Number: </h3><span>" + body.phone + "</span></div>" +
+                    "<div><h3>Message: </h3><p>" + body.message + "</p></div>" +
+                    "<div><span>----------------------------------------------------</span></div>" +
+                    "<div><span>Message sent from contact form on meetthemcafees.com</span></div>" +
+    "</html>";
+
   postmarkclient.sendEmail({
-    "From": "noreply@mcafeewedding.com",
+    "From": "noreply@meetthemcafees.com",
     "To": "admin@ryanmcafee.com",
     "ReplyTo": body.email,
     "Subject": body.subject,
-    "TextBody": body.message,
+    "HtmlBody": htmlBody
   }, function(error, result) {
 
     if(error !== null) {
