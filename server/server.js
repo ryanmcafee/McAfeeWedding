@@ -65,9 +65,10 @@ app.post('/contact-us', function (req, res) {
   console.log(body);
 
   postmarkclient.sendEmail({
-    "From": "info@mcafeewedding.com",
+    "From": "noreply@mcafeewedding.com",
     "To": "admin@ryanmcafee.com",
-    "Subject": "New Wedding Website Message!",
+    "ReplyTo": body.email,
+    "Subject": body.subject,
     "TextBody": body.message,
   }, function(error, result) {
     if(error) {
