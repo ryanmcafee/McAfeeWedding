@@ -168,6 +168,12 @@ p.copyright {
     font-weight: bold;
 }
 
+@media(max-width:360px){
+  .navbar-default .navbar-brand, .container h1, .container h2 {
+    font-size: 1.5em;
+  }
+}
+
 @media(max-width:767px) {
     .intro-message {
         padding-bottom: 15%;
