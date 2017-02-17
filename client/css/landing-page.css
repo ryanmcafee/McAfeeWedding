@@ -150,6 +150,7 @@ p.copyright {
     position: fixed;
     height: calc(100vh);
     overflow-y: scroll;
+    overflow-x: hidden;
 }
 
 ::-webkit-scrollbar {
