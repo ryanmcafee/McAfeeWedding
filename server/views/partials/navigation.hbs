@@ -11,14 +11,14 @@
     </div>
     <div class="collapse navbar-collapse" id="main-navigation">
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="/our-story#content">Our Story</a></li>
-        <li><a href="/rsvp">RSVP</a></li>
-        <li><a href="/registry">Registry</a></li>
-        <li><a href="/wheretostay">Where to stay</a></li>
-        <li><a href="/thingstodo">Things To Do in Pensacola</a></li>
-        <li><a href="/directions">Directions</a></li>
-        <li><a href="/engage">Engage</a></li>
-        <li><a href="/contact-us">Contact Us</a></li>
+        <li class="{{#if active.ourstory}}active{{/if}}"><a href="/our-story#content">Our Story</a></li>
+        <li class="{{#if active.rsvp}}active{{/if}}"><a href="/rsvp">RSVP</a></li>
+        <li class="{{#if active.registry}}active{{/if}}"><a href="/registry">Registry</a></li>
+        <li class="{{#if active.wheretostay}}active{{/if}}"><a href="/wheretostay">Where to stay</a></li>
+        <li class="{{#if active.thingstodo}}active{{/if}}"><a href="/thingstodo">Things To Do in Pensacola</a></li>
+        <li class="{{#if active.directions}}active{{/if}}"><a href="/directions">Directions</a></li>
+        <li class="{{#if active.engage}}active{{/if}}"><a href="/engage">Engage</a></li>
+        <li class="{{#if active.contactus}}active{{/if}}"><a href="/contact-us">Contact Us</a></li>
       </ul>
     </div>
   </div>

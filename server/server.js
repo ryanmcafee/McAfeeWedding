@@ -13,8 +13,6 @@ console.log(postmark_api_key);
 //Create the postmark client
 var postmarkclient = new postmark.Client(postmark_api_key);
 
-
-
 //Get the port the app should be hosted on
 var port = process.env.port ? process.env.port : 3000;
 
@@ -44,47 +42,91 @@ app.use(express.static(path.resolve('client')));
 
 //Deliver the view
 app.get('/', function (req, res) {
-  res.render('home');
+  res.render('home', {
+    active: {
+      home: true
+    }
+  });
 });
 
 app.get('/home', function (req, res) {
-  res.render('home');
+  res.render('home', {
+    active: {
+      home: true
+    }
+  });
 });
 
 app.get('/our-story', function (req, res) {
-  res.render('our-story');
+  res.render('our-story', {
+    active: {
+      ourstory: true
+    }
+  });
 });
 
 app.get('/contact-us', function (req, res) {
-  res.render('contact');
+  res.render('contact', {
+    active: {
+      contactus: true
+    }
+  });
 });
 
 app.post('/contact-us', function (req, res) {
-  res.render('contact');
+  res.render('contact', {
+    active: {
+      contactus: true
+    }
+  });
 });
 
 app.get('/wheretostay', function (req, res) {
-  res.render('wheretostay');
+  res.render('wheretostay', {
+    active: {
+      wheretostay: true
+    }
+  });
 });
 
 app.get('/thingstodo', function (req, res) {
-  res.render('thingstodo');
+  res.render('thingstodo', {
+    active: {
+      thingstodo: true
+    }
+  });
 });
 
 app.get('/rsvp', function (req, res) {
-  res.render('rsvp');
+  res.render('rsvp', {
+    active: {
+      rsvp: true
+    }
+  });
 });
 
 app.get('/engage', function (req, res) {
-  res.render('engage');
+  res.render('engage', {
+    active: {
+      engage: true
+    }
+  });
 });
 
 app.get('/directions', function (req, res) {
-  res.render('directions');
+  res.render('directions', {
+    active: {
+      directions: true
+    }
+  });
 });
 
 app.get('/registry', function (req, res) {
-  res.render('registry');
+  res.render('registry', {
+    active: {
+      registry: true
+    }
+  });
 });
 
 //API
